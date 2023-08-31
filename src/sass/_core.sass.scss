@@ -1,0 +1,177 @@
+// contains variables, resets, mixins, and other similar styles
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+// variables
+
+
+$background-dark: #222831;
+$background-med: #393E46;
+$background-light: #525964;
+
+$blue-dark: #018b92;
+$blue-med: #00ADB5;
+$blue-light: #00cad4;
+
+$white-dark: #a1a1a1;
+$white-med: #EEEEEE;
+$white-light: #ffffff;
+
+$box-shadow: 0px 5px 8px 2px rgba(5, 20, 103, 0.05);
+$box-shadow-hover: 0px 5px 8px 2px rgba(5, 20, 103, 0.3);
+$box-shadow-dark: 0px 5px 8px 2px rgba(0, 0, 0, 0.2);
+$box-shadow-dark-hover: 0px 5px 8px 2px rgba(0, 0, 0, 0.3);
+
+
+// mixins
+
+@mixin svgButton(){
+	@include flexContainer($direction: row, $justifyContent: center );
+
+	position: relative;
+	background-color: inherit;
+	border: none;
+}
+
+@mixin flexContainer($direction, $justifyContent) {
+	display: flex;
+	flex-direction: $direction;
+	flex-wrap: wrap;
+	justify-content: $justifyContent;
+	align-items: center;
+}
+
+@mixin responsive-mobile {
+	@media screen and (max-width: 575px){
+		@content;
+	}
+}
+
+@mixin responsive-sm {
+	@media screen and (min-width: 576px) and (max-width: 850px){
+		@content;
+	}
+}
+
+@mixin responsive-med {
+	@media screen and (min-width: 851px) and (max-width: 1100px){
+		@content;
+	}
+}
+
+@mixin responsive-lrg {
+	@media screen and (min-width: 1101px){
+		@content;
+	}
+}
+
+// css reset
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+code,
+em,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+main,
+canvas,
+embed,
+footer,
+header,
+nav,
+section,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	text-size-adjust: none;
+}
+
+footer,
+header,
+nav,
+section,
+main {
+	display: block;
+}
+
+body {
+	color: $white-med;
+	line-height: 1.1;
+	font-family: 'Lato', sans-serif;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+input {
+	-webkit-appearance: none;
+	border-radius: 0;
+}
