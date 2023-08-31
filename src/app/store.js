@@ -1,10 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import gameDataReducer from '../features/gameDataSlice';
-import filterStateReducer from '../features/filterStateSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import gameDataReducer from "../features/gameDataSlice";
+import filterStateReducer from "../features/filterStateSlice";
 
 export default configureStore({
-	reducer: {
-		game: gameDataReducer,
-		filters: filterStateReducer,
-	},
+  reducer: {
+    game: gameDataReducer,
+    filters: filterStateReducer,
+  },
 });
