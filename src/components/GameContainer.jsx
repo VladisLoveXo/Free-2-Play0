@@ -7,14 +7,16 @@ export const GameContainer = ({ toggleModal }) => {
   const gameStore = useSelector((state) => state.game.games);
   const filterStore = useSelector((state) => state.filters);
   const [games, setGames] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   let [page, setPage] = useState(1);
   const totalPageCount = Math.ceil(games.length / 12);
 
   useEffect(() => {
     if (gameStore.length >= 0) {
       setGames([...gameStore]);
+      setIsLoading(false);
     }
-  }, [gameStore]);
+  }, [gameStore, isLoading]);
 
   const compare = (a, b) => {
     if (filterStore.sort === "ALPHABETICAL") {
@@ -78,8 +80,12 @@ export const GameContainer = ({ toggleModal }) => {
         currentPage={page}
         totalPages={totalPageCount}
       />
-
-      {games.map((game, index) => {
+    {isLoading ? (
+      <p className="empty-message">Нет доступных игр.</p>
+    ) : games.length === 0 ? (
+      <p className="loading-message">Подождите, идет загрузка игр...</p>
+    ) : (
+      games.map((game, index) => {
         if (index >= page * 12 - 12 && index <= page * 12 - 1) {
           return (
             <GameCard
@@ -90,9 +96,11 @@ export const GameContainer = ({ toggleModal }) => {
             />
           );
         } else {
+          <p className="empty-message">К сожалению, игры не найдены.</p>
           return null;
         }
-      })}
+      })
+    )}
     </section>
   );
 };
