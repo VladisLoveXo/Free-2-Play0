@@ -3,15 +3,15 @@ export const SelectInput = ({ inputID, state, dropdownList, handleState }) => {
   const MENU = document.getElementById(`${inputID}-menu`);
 
   const handleClick = () => {
-    if (INPUT.classList.contains("select-active")) {
+    if (INPUT?.classList.contains("select-active")) {
       MENU.classList.remove("menu-active");
       setTimeout(() => {
         INPUT.classList.remove("select-active");
       }, 300);
     } else {
-      INPUT.classList.add("select-active");
+      INPUT?.classList.add("select-active");
       setTimeout(() => {
-        MENU.classList.add("menu-active");
+        MENU?.classList.add("menu-active");
       }, 300);
     }
   };
